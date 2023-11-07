@@ -1,0 +1,74 @@
+{
+  "version": {
+    "versionNumber": "1",
+    "updateTime": "2022-03-21T23:38:22.486Z",
+    "updateUser": {
+      "email": "me@you.com"
+    },
+    "description": "add welcome message",
+    "updateOrigin": "CONSOLE",
+    "updateType": "INCREMENTAL_UPDATE",
+    "isLegacy": false
+  },
+  "conditions": [
+    {
+      "name": "web_users",
+      "expression": "device.os == 'web'",
+      "tagColor": "GREEN"
+    },
+    {
+      "name": "android_users",
+      "expression": "device.os == 'android'",
+      "tagColor": "BLUE"
+    },
+    {
+      "name": "spending_users",
+      "expression": "analytics.audience == 'likely_to_spend'",
+      "tagColor": "RED"
+    }
+  ],
+  "parameters": {
+    "welcome_message": {
+      "defaultValue": {
+        "value": "Hi Welcome!"
+      },
+      "conditionalValues": {
+        "spending_users": {
+          "value": "Welcome Big Spender!"
+        }
+      },
+      "valueType": "STRING"
+    },
+    "price": {
+      "defaultValue": {
+        "value": "200"
+      },
+      "valueType": "NUMBER"
+    },
+    "discount_percentage": {
+      "defaultValue": {
+        "value": "5"
+      },
+      "conditionalValues": {
+        "spending_users": {
+          "value": "12"
+        }
+      },
+      "valueType": "NUMBER"
+    },
+    "border_color": {
+      "defaultValue": {
+        "value": "red-border"
+      },
+      "conditionalValues": {
+        "web_users": {
+          "value": "blue-border"
+        },
+        "android_users": {
+          "value": "green-border"
+        }
+      },
+      "valueType": "STRING"
+    }
+  }
+}
